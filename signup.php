@@ -11,6 +11,39 @@
         
 }
 </style>
+
+
+<script>
+
+function showUser(str) {
+     
+              if (window.XMLHttpRequest) {
+             // code for IE7+, Firefox, Chrome, Opera, Safari
+               xmlhttp = new XMLHttpRequest();
+                } else {
+              // code for IE6, IE5
+               xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+              xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+           document.getElementById("para").innerHTML = this.responseText;
+                                                                                          }
+             };
+              
+            xmlhttp.open("GET","check.php?q="+str,true);                   
+            xmlhttp.send();                                                                
+                            }
+
+
+
+
+
+</script>
+
+
+
+
+
 </head>
 <body>  
 
@@ -41,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           }
           
         if (empty($_POST["username"])) {
-              $usernamErre = "Username is required";
+              $usernameErr = "Username is required";
                 } else {
                       $username = test_input($_POST["username"]);
                           // check if username is valid/
@@ -98,14 +131,15 @@ function test_input($data) {
 <div class="body">
 <div><h2>SIGN UP</h2></div>
 <div><p><span class="error">* required field.</span></p></div>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="myform">  
  <div> Name: <input type="text" name="name" value="<?php echo $name;?>">
     <span class="error">* <?php echo $nameErr;?></span>
       <br><br></div>
         <div>E-mail: <input type="text" name="email" value="<?php echo $email;?>">
           <span class="error">* <?php echo $emailErr;?></span>
             <br><br></div>
-              <div>Username:<input type="text" name="username" value="<?php echo $username;?>">
+              <div>Username:<input type="text" name="username" value="<?php echo $username;?>" onkeyup="showUser(this.value)" id="username">
+              <span id="para"></span>
                 <span class="error">*<?php echo $usernameErr;?></span>
                   <br><br></div>
                   <div> Password:<input type="password" name="password" value="<?php echo $password;?>">
