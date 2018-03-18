@@ -1,21 +1,22 @@
 <!doctype html>
 <html>
 <head>
+                                                                      }
 <title> Login Page</title>
 <style>
 .form{
-        display:flex;
-                      flex-direction:column;
-                            align-items:center;
+      display:flex;
+                    flex-direction:column;
+                          align-items:center;
 }
 .xy{
-      margin:20px;
+    margin:20px;
 }
 .options{
-           display:flex;
-                            flex-direction:column;
-                                     align-items:center;
-                                              background-color:#cbabc1;
+         display:flex;
+                          flex-direction:column;
+                                   align-items:center;
+                                            background-color:#cbabc1;
 }
 
 </style>
@@ -23,13 +24,39 @@
 </head>
 <body>
 
+<?php
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+
+      if($_POST['remember'] )
+                                      {
+      $cookie_value = $_POST['username'];
+      $cookie_name = "user";
+     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+                                                                                                                                                                                                }
+
+
+echo $_COOKIE[$cookie_name];
+
+
+          if(!isset($_COOKIE[$cookie_name])) {
+                         echo $_cookie_name;
+                          echo "Cookie named '" . $cookie_name . "' is not set!";
+                              } else {
+                                              echo "Cookie '" . $cookie_name . "' is set!<br>";
+                                                                              echo "welcome " . $_COOKIE[$cookie_name];
+                                                                                  }
+}
+
+?>
 
 <div class= "form">
 <h1> LOGIN FORM </h1>
 <form id='login' action="" method= "post">
   
    <div class="xy">
-   Username: <input type='text' name='username' id='username' required>
+ Username: <input type='text' name='username' id='username' required value="<?php echo $_COOKIE['user']?>">
    </div><span id="para"></span>
                        
    <div class="xy">
@@ -42,8 +69,10 @@
                                                                
    <div class="xy">
    <input type='checkbox' checked='checked' name='remember'>Remember me            </div>
-                                                                                   </div>
+</div>
                                                                                    </form>
+
+
 
 
 
@@ -86,5 +115,9 @@ $db = mysqli_connect('192.168.121.187','first_year','first_year','first_year_db'
                 }
    } 
 ?>
+
+
+
+
   </body>
 </html>
