@@ -35,19 +35,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       $cookie_name = "user";
      setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
                                                                                                                                                                                                 }
+       else{ 
+        $cookie_value="";
+      $cookie_name = "user";
+           setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+                                  }
 
 
-echo $_COOKIE[$cookie_name];
 
+}
 
-          if(!isset($_COOKIE[$cookie_name])) {
+         /* if(!isset($_COOKIE[$cookie_name])) {
                          echo $_cookie_name;
                           echo "Cookie named '" . $cookie_name . "' is not set!";
                               } else {
                                               echo "Cookie '" . $cookie_name . "' is set!<br>";
                                                                               echo "welcome " . $_COOKIE[$cookie_name];
                                                                                   }
-}
+}*/
 
 ?>
 
@@ -56,7 +62,7 @@ echo $_COOKIE[$cookie_name];
 <form id='login' action="" method= "post">
   
    <div class="xy">
- Username: <input type='text' name='username' id='username' required value="<?php echo $_COOKIE['user']?>">
+ Username: <input type='text' name='username' id='username' required value="<?php  if(isset ($_COOKIE['user'])){echo  $_COOKIE['user'];}?>">
    </div><span id="para"></span>
                        
    <div class="xy">
@@ -68,7 +74,7 @@ echo $_COOKIE[$cookie_name];
    </div>
                                                                
    <div class="xy">
-   <input type='checkbox' checked='checked' name='remember'>Remember me            </div>
+   <input type='checkbox' name='remember'>Remember me            </div>
 </div>
                                                                                    </form>
 

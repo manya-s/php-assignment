@@ -150,23 +150,23 @@ if (preg_match("/^[a-zA-Z ]*$/",$name) && filter_var($email, FILTER_VALIDATE_EMA
 <div><h2>SIGN UP</h2></div>
 <div><p><span class="error">* required field.</span></p></div>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="myform">  
- <div> Name: <input type="text" name="name" value="<?php echo $name;?>">
+ <div> Name: <input type="text" name="name" value="<?php echo $name;?>" required>
     <span class="error">* <?php echo $nameErr;?></span>
       <br><br></div>
-        <div>E-mail: <input type="text" name="email" value="<?php echo $email;?>">
+        <div>E-mail: <input type="text" name="email" value="<?php echo $email;?>" required>
           <span class="error">* <?php echo $emailErr;?></span>
             <br><br></div>
-              <div>Username:<input type="text" name="username" value="<?php echo $username;?>" onkeyup="showUser(this.value)" id="username">
+              <div>Username:<input type="text" name="username" value="<?php echo $username;?>" onkeyup="showUser(this.value)" id="username" required>
               <span id="para"></span>
                 <span class="error">*<?php echo $usernameErr;?></span>
                   <br><br></div>
-                  <div> Password:<input type="password" name="password" value="<?php echo $password;?>">
+                  <div> Password:<input type="password" name="password" value="<?php echo $password;?>" required>
                   <span class="error">*<?php echo $passErr;?></span>
                   <br><br></div>
-                  <div>Confirm Password:<input type="password" name="confirmpass" value="<?php echo $confirmpass;?>">
+                  <div>Confirm Password:<input type="password" name="confirmpass" value="<?php echo $confirmpass;?>" required>
                   <span class="error">*<?php echo $cnfmpassErr;?></span>
                   <br><br></div>
-                    <div>Mobile number: <input type= "text" name="mobile" value="<?php echo $mobile;?>">
+                    <div>Mobile number: <input type= "text" name="mobile" value="<?php echo $mobile;?>" required>
                      <span class="error">*<?php echo $mobileErr;?></span>
                       <br><br></div>
                         <div>Gender:
